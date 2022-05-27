@@ -1,3 +1,3 @@
-FROM scratch
-COPY seed /
-ENTRYPOINT ["/seed"]
+FROM gcr.io/distroless/static
+COPY promcord /
+ENTRYPOINT ["/promcord"]
