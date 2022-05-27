@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"net/http"
+
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 

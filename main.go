@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	Commit  string
-	Version string
+	commit  string
+	version string
 )
 
 var (
@@ -24,7 +24,7 @@ var (
 )
 
 func main() {
-	log.Println("Starting Server")
+	log.Println("Starting Server. Version: ", version, " Commit: ", commit)
 	ctx, cancel := context.WithCancel(context.Background())
 
 	sigs := make(chan os.Signal, 1)
@@ -50,5 +50,4 @@ func main() {
 	<-sigs
 	cancel()
 	log.Println("Exiting")
-	os.Exit(0)
 }

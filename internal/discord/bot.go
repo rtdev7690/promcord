@@ -71,7 +71,7 @@ func StartBot(ctx context.Context, token string, perspectiveKey string) (*discor
 			if err != nil {
 				log.Println("err: ", err.Error())
 			} else {
-				//_ = encoder.Encode(&resp)
+				// _ = encoder.Encode(&resp)
 				toxicScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["TOXICITY"].SummaryScore.Value))
 				severeToxicScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["SEVERE_TOXICITY"].SummaryScore.Value))
 				insultScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["INSULT"].SummaryScore.Value))
