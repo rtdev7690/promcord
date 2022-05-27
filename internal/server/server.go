@@ -13,5 +13,5 @@ func StartServer(ctx context.Context) error {
 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusOK) })
 	mux.Handle("/metrics", promhttp.Handler())
 
-	return http.ListenAndServe(":2114", mux)
+	return http.ListenAndServe(":8080", mux)
 }
