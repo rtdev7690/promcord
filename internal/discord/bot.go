@@ -51,7 +51,7 @@ func StartBot(ctx context.Context, token string, perspectiveKey string) (*discor
 			return // ignore bots for now
 		}
 		messageCount.WithLabelValues(m.GuildID, m.Author.String()).Inc()
-		log.Println("Message: ", m.Author.String(), " -> ", m.Message.Content)
+		// log.Println("Message: ", m.Author.String(), " -> ", m.Message.Content) TODO: do log levels
 
 		if m.Message.Content != "" {
 			resp, err := client.AnalyzeComment(gp.AnalyzeRequest{
@@ -71,7 +71,7 @@ func StartBot(ctx context.Context, token string, perspectiveKey string) (*discor
 			if err != nil {
 				log.Println("err: ", err.Error())
 			} else {
-				// _ = encoder.Encode(&resp)
+				// _ = encoder.Encode(&resp) TODO: do log levels
 				toxicScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["TOXICITY"].SummaryScore.Value))
 				severeToxicScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["SEVERE_TOXICITY"].SummaryScore.Value))
 				insultScore.WithLabelValues(m.GuildID, m.Author.String()).Observe(float64(resp.AttributeScores["INSULT"].SummaryScore.Value))

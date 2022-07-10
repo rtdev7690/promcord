@@ -3,6 +3,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"log"
 	"net/http"
 	"os"
@@ -21,9 +22,12 @@ var (
 var (
 	DiscordToken   string = os.Getenv("DISCORD_TOKEN")
 	PerspectiveKey string = os.Getenv("PERSPECTIVE_KEY")
+	StopDelay      *int = flag.Int("stop-delay", 5, "amount of time to wait before exiting. Giving time for connections to drain")
 )
 
 func main() {
+	flag.Parse()
+
 	log.Println("Starting Server. Version: ", version, " Commit: ", commit)
 	ctx, cancel := context.WithCancel(context.Background())
 
