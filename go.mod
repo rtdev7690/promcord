@@ -16,7 +16,7 @@ require (
 )
 
 require (
-	github.com/bwmarrin/discordgo v0.25.0
+	github.com/bwmarrin/discordgo v0.26.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/exsocial/goperspective v0.0.0-20211005174320-4fc4cfd36768
 	github.com/gorilla/websocket v1.4.2 // indirect
